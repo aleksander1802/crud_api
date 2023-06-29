@@ -4,34 +4,45 @@ import { Configuration } from 'webpack';
 import { devConfig } from './webpack.dev.config';
 import { prodConfig } from './webpack.prod.config';
 
-const config: Configuration = {
+const config = {
   target: 'node',
-  entry: './src/index.ts',
+  entry: './src/server.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
   },
+
   resolve: {
     extensions: ['.ts', '.js'],
   },
   module: {
     rules: [
       {
-        test: /\.ts$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
+        test: /\.(ts|tsx)$/i,
+        loader: 'ts-loader',
+        exclude: ['/node_modules/'],
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+        type: 'asset',
       },
     ],
   },
 };
 
-export const commonConfig = (env: any, argv: Configuration): Configuration => {
+export default (env: any, argv: Configuration): Configuration => {
   if (argv.mode === 'development') {
-    return devConfig;
+    return {
+      ...config,
+      ...devConfig,
+    };
   }
 
   if (argv.mode === 'production') {
-    return prodConfig;
+    return {
+      ...config,
+      ...prodConfig,
+    };
   }
 
   return config;

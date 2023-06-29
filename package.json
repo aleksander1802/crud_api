@@ -10,6 +10,7 @@
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
     "cross-env": "^7.0.3",
+    "dotenv": "^16.3.1",
     "eslint": "^8.43.0",
     "nodemon": "^2.0.22",
     "ts-node": "^10.9.1",
@@ -20,10 +21,11 @@
   },
   "scripts": {
     "lint": "eslint src",
-    "start:dev": "cross-env NODE_ENV=development nodemon --exec ts-node src/server.ts",
-    "start:prod": "cross-env NODE_ENV=production node dist/server.js",
+    "start:dev": "cross-env NODE_ENV=development ts-node-dev --respawn --transpile-only ./src/server.ts",
+    "start:prod": "cross-env NODE_ENV=production node ./dist/server.js",
     "build": "webpack",
-    "prestart:prod": "npm run build"
+    "prestart:prod": "npm run build",
+    "start": "npm run start:dev"
   },
   "repository": {
     "type": "git",
