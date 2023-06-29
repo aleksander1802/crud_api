@@ -21,7 +21,7 @@
   },
   "scripts": {
     "lint": "eslint src",
-    "start:dev": "cross-env NODE_ENV=development ts-node-dev --respawn --transpile-only ./src/server.ts",
+    "start:dev": "cross-env NODE_ENV=development nodemon",
     "start:prod": "cross-env NODE_ENV=production node ./dist/server.js",
     "build": "webpack",
     "prestart:prod": "npm run build",
