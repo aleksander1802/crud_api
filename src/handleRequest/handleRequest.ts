@@ -5,7 +5,7 @@ import { parseJson } from '../helper/parseJson';
 import { sendResponse } from '../helper/sendResponce';
 import { isValidUUID } from './../helper/uuidValidation';
 
-const users: User[] = [];
+export const users: User[] = [];
 
 export const handleRequest = (req: IncomingMessage, res: ServerResponse) => {
   try {
@@ -37,7 +37,7 @@ export const handleRequest = (req: IncomingMessage, res: ServerResponse) => {
           const { username, age, hobbies } =
             parseJson<Partial<User>>(body) || {};
 
-          if (!username || !age || !hobbies) {
+          if (!username || !age || !hobbies || !Array.isArray(hobbies)) {
             sendResponse(res, 400, {
               message: 'Missing required fields',
             } as ErrorResponse);
@@ -84,7 +84,7 @@ export const handleRequest = (req: IncomingMessage, res: ServerResponse) => {
             sendResponse(res, 404, {
               message: 'User not found',
             } as ErrorResponse);
-          } else if (!username || !age || !hobbies) {
+          } else if (!username || !age || !hobbies || !Array.isArray(hobbies)) {
             sendResponse(res, 400, {
               message: 'Missing required fields',
             } as ErrorResponse);

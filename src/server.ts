@@ -1,7 +1,7 @@
 import http, { Server } from 'http';
 import { handleRequest } from './handleRequest/handleRequest';
 
-const server: Server = http.createServer(handleRequest);
+export const server: Server = http.createServer(handleRequest);
 
 const port = process.env.PORT || 4000;
 
