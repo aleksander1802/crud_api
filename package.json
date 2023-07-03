@@ -17,6 +17,7 @@
     "nodemon": "^2.0.22",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
+    "ts-loader": "^9.4.4",
     "ts-node-dev": "^2.0.0",
     "uuid": "^9.0.0",
     "webpack": "^5.88.0",
@@ -24,9 +25,10 @@
   },
   "scripts": {
     "lint": "eslint src",
+    "build": "webpack",
     "start:dev": "cross-env NODE_ENV=development npx nodemon",
     "start:prod": "cross-env NODE_ENV=production npm run build && npm run start",
-    "start:dev:multi": "cross-env USE_CLUSTER=true npx nodemon",
+    "start:dev:multi": "cross-env USE_CLUSTER=true  npx nodemon --experimental-worker",
     "start:prod:multi": "cross-env NODE_ENV=production npm run build && cross-env USE_CLUSTER=true npm run start",
     "start": "node ./dist/bundle.js",
     "test": "jest"
