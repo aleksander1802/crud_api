@@ -2,7 +2,7 @@
 To work with the project you should to clone the repository
 
 ```
-git clone [https://github.com/aleksander1802/crud_api/tree/develop](https://github.com/aleksander1802/crud_api.git)
+git clone https://github.com/aleksander1802/crud_api.git
 ```
 
 switch to the develop branch
