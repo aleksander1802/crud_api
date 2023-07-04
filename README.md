@@ -29,7 +29,7 @@ npm run start:prod
 ```
 
 
-After launching the application, open Insomnia or another API client.
+After launching the application, launch the Insomnia or another API client.
 
 
 To get an array of all users, select the GET method and specify the address
