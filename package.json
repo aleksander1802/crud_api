@@ -1,0 +1,47 @@
+{
+  "name": "crud_api",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "@types/eslint": "^8.40.2",
+    "@types/jest": "^29.5.2",
+    "@types/nodemon": "^1.19.2",
+    "@types/uuid": "^9.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.60.1",
+    "@typescript-eslint/parser": "^5.60.1",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.43.0",
+    "jest": "^29.5.0",
+    "nodemon": "^2.0.22",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.1",
+    "ts-loader": "^9.4.4",
+    "ts-node-dev": "^2.0.0",
+    "uuid": "^9.0.0",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "scripts": {
+    "lint": "eslint src",
+    "build": "webpack",
+    "start:dev": "cross-env NODE_ENV=development npx nodemon",
+    "start:prod": "cross-env NODE_ENV=production npm run build && npm run start",
+    "start:dev:multi": "cross-env USE_CLUSTER=true  npx nodemon --experimental-worker",
+    "start:prod:multi": "cross-env NODE_ENV=production npm run build && cross-env USE_CLUSTER=true npm run start",
+    "start": "node ./dist/bundle.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aleksander1802/crud_api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aleksander1802/crud_api/issues"
+  },
+  "homepage": "https://github.com/aleksander1802/crud_api#readme"
+}
